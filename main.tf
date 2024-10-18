@@ -3,7 +3,10 @@ resource "aws_launch_template" "web_server_as" {
     image_id = "ami-0ddc798b3f1a5117e"
     instance_type = "t2.micro"
     key_name = "mykeypair"
-    
+    network_interfaces {
+    associate_public_ip_address = true
+    security_groups = [aws_security_group.web_server.id]
+    }
     
 }
    
